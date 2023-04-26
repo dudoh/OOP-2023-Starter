@@ -129,11 +129,4 @@ public class DANI extends PApplet {
 		return null;
 	}
 
-	//printing model ArrayList
-	public void printModel() {
-		for (Word wordObj : model) {
-			println(wordObj.toString());
-		}
-	}
-
-}
+	
