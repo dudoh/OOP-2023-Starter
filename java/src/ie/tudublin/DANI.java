@@ -4,8 +4,6 @@ import processing.core.PApplet;
 
 public class DANI extends PApplet {
 
-	
-
 	public void settings() {
 		size(1000, 1000);
 		//fullScreen(SPAN);
@@ -21,7 +19,7 @@ public class DANI extends PApplet {
 	
 	public void setup() {
 		colorMode(HSB);
-
+		loadfile(filename:"small.txt");
        
 	}
 
@@ -40,4 +38,6 @@ public class DANI extends PApplet {
         textAlign(CENTER, CENTER);
         
 	}
+
+	
 }
