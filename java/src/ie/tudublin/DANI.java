@@ -88,3 +88,52 @@ public class DANI extends PApplet {
 		}
 	}
 	
+	
+	// Method that loads a file and builds the model ArrayList
+	public void loadFile(String filename) {
+		String[] lines = loadStrings(filename);
+		String prevWord = null;
+
+		for (String line : lines) {
+			String[] words = split(line, ' ');
+
+			for (String w : words) {
+				w = w.replaceAll("[^\\w\\s]", "").toLowerCase();
+
+				if (prevWord != null) {
+					Word wordObj = findWord(prevWord);
+					if (wordObj == null) {
+						wordObj = new Word(prevWord);
+						model.add(wordObj);
+					}
+
+					Follow followObj = wordObj.findFollow(w);
+					if (followObj == null) {
+						wordObj.addFollow(new Follow(w, 1));
+					} else {
+						followObj.incrementCount();
+					}
+				}
+				prevWord = w;
+			}
+		}
+	}
+
+	// find a Word object in the model ArrayList by its String value
+	public Word findWord(String str) {
+		for (Word wordObj : model) {
+			if (wordObj.getWord().equals(str)) {
+				return wordObj;
+			}
+		}
+		return null;
+	}
+
+	//printing model ArrayList
+	public void printModel() {
+		for (Word wordObj : model) {
+			println(wordObj.toString());
+		}
+	}
+
+}
