@@ -2,6 +2,7 @@
 
 package ie.tudublin;
 
+//creating follow class
 public class Follow {
     private String word;
     private int count;
